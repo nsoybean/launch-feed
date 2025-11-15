@@ -62,8 +62,7 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
               Get discovered as you build. Join a community of indie builders
-              and founders shipping in public. Follow progress, celebrate
-              milestones, and discover products as they&apos;re being built.
+              and founders shipping in public.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <input

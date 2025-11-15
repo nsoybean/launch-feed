@@ -45,9 +45,9 @@ export default function Home() {
 
     const date = new Date();
     const inputValue: { [key: string]: string } = {
-      email: email,
-      website: website || "",
-      xHandle: xHandle || "",
+      email: email.trim(),
+      website: website.trim() || "",
+      xHandle: xHandle.trim() || "",
       createdAt: date.toLocaleString(),
     };
 

@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
+import { toast } from "sonner";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -35,7 +36,7 @@ export default function Home() {
 
   const handleSubmit = async () => {
     if (!email) {
-      alert("Please enter your email");
+      toast.warning("Please enter your email");
       return;
     }
 

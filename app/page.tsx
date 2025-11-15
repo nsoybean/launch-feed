@@ -224,7 +224,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div className="text-center">
-              <div className="text-5xl font-bold">80+</div>
+              <div className="text-5xl font-bold">100+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
                 On Waitlist
               </div>

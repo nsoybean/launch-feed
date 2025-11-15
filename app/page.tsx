@@ -1,15 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
+import { Rocket } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";

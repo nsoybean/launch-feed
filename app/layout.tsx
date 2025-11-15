@@ -16,6 +16,24 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Launch Feed",
   description: "Where builders share their journey, not just their launch",
+  openGraph: {
+    title: "Launch Feed",
+    description: "Where builders share their journey, not just their launch",
+    images: [
+      {
+        url: "/app.png",
+        width: 1200,
+        height: 630,
+        alt: "Launch Feed",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Launch Feed",
+    description: "Where builders share their journey, not just their launch",
+    images: ["/app.png"],
+  },
 };
 
 export default function RootLayout({

@@ -159,21 +159,21 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div className="text-center">
-              <div className="text-5xl font-bold">30+</div>
+              <div className="text-5xl font-bold">80+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-                Builders
+                On Waitlist
               </div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold">850+</div>
+              <div className="text-5xl font-bold">12+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-                Products
+                Early Builders
               </div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold">12K+</div>
+              <div className="text-5xl font-bold">45+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-                Updates
+                Projects Shared
               </div>
             </div>
           </div>

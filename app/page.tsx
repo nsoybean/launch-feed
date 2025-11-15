@@ -82,19 +82,19 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div className="text-center">
-              <div className="text-5xl font-bold text-primary">30+</div>
+              <div className="text-5xl font-bold">30+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
                 Builders
               </div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-primary">850+</div>
+              <div className="text-5xl font-bold">850+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
                 Products
               </div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-primary">12K+</div>
+              <div className="text-5xl font-bold">12K+</div>
               <div className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
                 Updates
               </div>

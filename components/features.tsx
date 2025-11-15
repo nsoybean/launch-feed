@@ -23,7 +23,7 @@ const Features = (props: Props) => {
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Launch Early - Wide Card */}
-          <Card className="sm:col-span-2">
+          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
               <CardTitle>Launch Early, Launch Often</CardTitle>
               <CardDescription>
@@ -42,7 +42,7 @@ const Features = (props: Props) => {
           </Card>
 
           {/* Feedback and Community Voting - Regular Card */}
-          <Card>
+          <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
               <CardTitle>Feedback & Community Voting</CardTitle>
               <CardDescription>
@@ -61,7 +61,7 @@ const Features = (props: Props) => {
           </Card>
 
           {/* Stay Updated - Regular Card */}
-          <Card>
+          <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
               <CardTitle>Stay Updated</CardTitle>
               <CardDescription>
@@ -80,7 +80,7 @@ const Features = (props: Props) => {
           </Card>
 
           {/* Build in Public - Regular Card */}
-          <Card className="sm:col-span-2">
+          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
               <CardTitle>Build in Public</CardTitle>
               <CardDescription>

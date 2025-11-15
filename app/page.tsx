@@ -64,15 +64,20 @@ export default function Home() {
               Get discovered as you build. Join a community of indie builders
               and founders shipping in public.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-4">
-              <input
-                type="email"
-                placeholder="name@email.com"
-                className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
-              />
-              <Button size="lg" className="h-12">
-                Join Waitlist
-              </Button>
+            <div className="mt-10">
+              <div className="flex items-center justify-center gap-4">
+                <input
+                  type="email"
+                  placeholder="name@email.com"
+                  className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                />
+                <Button size="lg" className="h-12">
+                  Join Waitlist
+                </Button>
+              </div>
+              <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+                100+ builders have already joined
+              </p>
             </div>
           </div>
         </div>

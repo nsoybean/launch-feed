@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Rocket } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
@@ -9,6 +8,7 @@ import { RocketLaunchIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
+import CTASection from "@/components/cta-section";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -246,32 +246,7 @@ export default function Home() {
       <Features />
 
       {/* CTA Section */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <Card className="overflow-hidden border-none bg-linear-to-r from-secondary to-secondary/80">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Ready to Build in Public?
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg">
-                Join the waitlist and be among the first to showcase your
-                journey, connect with other builders, and grow your audience.
-              </p>
-              <div className="mt-8 flex items-center justify-center gap-4">
-                {/* commented out repeated input form */}
-                {/* <input
-                  type="email"
-                  placeholder="name@email.com"
-                  className="h-12 w-full max-w-sm rounded-lg border-0 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 bg-white"
-                /> */}
-                <Button size="lg" className="h-12" onClick={scrollToHero}>
-                  Join Waitlist
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <CTASection onJoinClick={scrollToHero} />
 
       {/* Footer */}
       <Footer />

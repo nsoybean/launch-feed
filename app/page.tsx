@@ -10,13 +10,14 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [xHandle, setXHandle] = useState("");
+  const formRef = useRef<HTMLDivElement>(null);
 
   const scrollToHero = () => {
     const heroSection = document.getElementById("hero");
@@ -32,6 +33,22 @@ export default function Home() {
     console.log({ email, website, xHandle });
     // You can add your submission logic here
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        setShowForm(false);
+      }
+    };
+
+    if (showForm) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showForm]);
   return (
     <div className="min-h-screen bg-linear-to-b from-white to-zinc-50 dark:from-black dark:to-zinc-950">
       {/* Spacer for fixed navbar */}
@@ -80,48 +97,48 @@ export default function Home() {
               Get discovered as you build. Join a community of indie builders
               and founders shipping in public.
             </p>
-            <div className="mt-10">
-              <div className="flex items-center justify-center gap-4">
-                <input
-                  type="email"
-                  placeholder="name@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
-                />
-                <Button size="lg" className="h-12" onClick={handleJoinWaitlist}>
-                  Join Waitlist
-                </Button>
-              </div>
-
-              {/* Additional form fields */}
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  showForm ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="flex flex-col items-center gap-4 max-w-2xl mx-auto">
+            <div className="mt-10 flex flex-col items-center">
+              <div className="w-full max-w-2xl" ref={formRef}>
+                <div className="flex items-start gap-4">
                   <input
-                    type="url"
-                    placeholder="Website (optional)"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                    className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
-                  />
-                  <input
-                    type="text"
-                    placeholder="X handle (optional, e.g. @nsoybean)"
-                    value={xHandle}
-                    onChange={(e) => setXHandle(e.target.value)}
-                    className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                    type="email"
+                    placeholder="name@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={() => setShowForm(true)}
+                    className="h-12 flex-1 rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
                   />
                   <Button
                     size="lg"
-                    className="h-12 w-full max-w-sm"
-                    onClick={handleSubmit}
+                    className="h-12 shrink-0"
+                    onClick={showForm ? handleSubmit : handleJoinWaitlist}
                   >
-                    Submit
+                    {showForm ? "Submit" : "Join Waitlist"}
                   </Button>
+                </div>
+
+                {/* Additional form fields */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    showForm ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="flex flex-col gap-4">
+                    <input
+                      type="url"
+                      placeholder="Website (optional)"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      className="h-12 w-full rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                    />
+                    <input
+                      type="text"
+                      placeholder="X handle (optional, e.g. @nsoybean)"
+                      value={xHandle}
+                      onChange={(e) => setXHandle(e.target.value)}
+                      className="h-12 w-full rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                    />
+                  </div>
                 </div>
               </div>
 

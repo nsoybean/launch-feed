@@ -18,13 +18,15 @@ export default function Home() {
   };
   return (
     <div className="min-h-screen bg-linear-to-b from-white to-zinc-50 dark:from-black dark:to-zinc-950">
+      {/* Spacer for fixed navbar */}
+      <div className="h-14"></div>
       {/* Navigation */}
-      <nav className="border-b bg-white/80 backdrop-blur-sm dark:bg-black/80">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/20 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-black/70">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-14 items-center justify-between">
             <div className="flex items-center gap-2">
-              <Rocket className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">LaunchFeed</span>
+              <Rocket className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold">LaunchFeed</span>
             </div>
             <div className="flex items-center gap-4">
               {/* <Button variant="ghost" size="sm">
@@ -37,7 +39,7 @@ export default function Home() {
                 About
               </Button> */}
 
-              <Button size="sm" onClick={scrollToHero}>
+              <Button size="sm" onClick={scrollToHero} className="h-8 text-xs">
                 Join Waitlist
               </Button>
             </div>

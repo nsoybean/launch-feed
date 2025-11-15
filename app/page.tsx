@@ -284,12 +284,13 @@ export default function Home() {
                 journey, connect with other builders, and grow your audience.
               </p>
               <div className="mt-8 flex items-center justify-center gap-4">
-                <input
+                {/* commented out repeated input form */}
+                {/* <input
                   type="email"
                   placeholder="name@email.com"
                   className="h-12 w-full max-w-sm rounded-lg border-0 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 bg-white"
-                />
-                <Button size="lg" className="h-12">
+                /> */}
+                <Button size="lg" className="h-12" onClick={scrollToHero}>
                   Join Waitlist
                 </Button>
               </div>

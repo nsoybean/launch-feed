@@ -30,12 +30,12 @@ const Features = (props: Props) => {
                 Share your SaaS from day one. Don&apos;t wait until it&apos;s
                 perfect. Build momentum as you build your product.
               </CardDescription>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg p-2">
                 <Image
-                  src="/launch.png"
+                  src="/launches.png"
                   alt="Launch your product early"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[0%_0%]"
                 />
               </div>
             </CardHeader>
@@ -49,7 +49,7 @@ const Features = (props: Props) => {
                 Get valuable feedback from real users. Let the community vote on
                 features and help shape your product roadmap.
               </CardDescription>
-              <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-lg">
+              <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-lg p-2">
                 <Image
                   src="/community_feedback.png"
                   alt="Community feedback and voting"
@@ -68,7 +68,7 @@ const Features = (props: Props) => {
                 Follow your favorite builders and get notified when they ship
                 new features, hit milestones, or share important updates.
               </CardDescription>
-              <div className="relative mt-4 aspect-3/4 w-full overflow-hidden rounded-lg">
+              <div className="relative mt-4 aspect-3/4 w-full overflow-hidden rounded-lg p-2">
                 <Image
                   src="/be_updated.png"
                   alt="Stay updated with notifications"
@@ -87,7 +87,7 @@ const Features = (props: Props) => {
                 Share milestones, celebrate wins, and document your journey.
                 Build trust and grow your audience as you build.
               </CardDescription>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg p-2">
                 <Image
                   src="/timeline.png"
                   alt="Share your milestones"

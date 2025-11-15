@@ -17,8 +17,11 @@ export const metadata: Metadata = {
   title: "Launch Feed",
   description: "Where builders share their journey, not just their launch",
   openGraph: {
+    type: "website",
+    url: "https://launchfeed.vercel.app",
     title: "Launch Feed",
     description: "Where builders share their journey, not just their launch",
+    siteName: "Launch Feed",
     images: [
       {
         url: "/app.png",

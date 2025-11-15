@@ -11,6 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { RocketLaunchIcon } from "@phosphor-icons/react";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -58,7 +59,11 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-14 items-center justify-between">
             <div className="flex items-center gap-2">
-              <Rocket className="h-4 w-4 text-primary" />
+              {/* <Rocket className="h-4 w-4 text-primary" /> */}
+              <RocketLaunchIcon
+                className="h-8 w-8 text-primary"
+                weight="fill"
+              />
               <span className="text-md font-semibold">LaunchFeed</span>
             </div>
             <div className="flex items-center gap-4">
@@ -84,8 +89,7 @@ export default function Home() {
       <section id="hero" className="px-4 pt-20 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
-            <Badge className="mb-6" variant="secondary">
-              <Rocket className="mr-1 h-3 w-3" />
+            <Badge className="mb-4" variant="secondary">
               Where Builders Build in Public
             </Badge>
             <h1 className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl lg:text-7xl">

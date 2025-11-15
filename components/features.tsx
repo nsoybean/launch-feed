@@ -1,5 +1,5 @@
 import React from "react";
-import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
+import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
 type Props = unknown;
@@ -10,7 +10,7 @@ const Features = (props: Props) => {
   }
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             Why LaunchFeed?
@@ -21,84 +21,101 @@ const Features = (props: Props) => {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <Card>
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Launch Early - Wide Card */}
+          <Card className="sm:col-span-2">
             <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Rocket className="h-6 w-6 text-primary" />
-              </div>
               <CardTitle>Launch Early, Launch Often</CardTitle>
               <CardDescription>
                 Share your SaaS from day one. Don&apos;t wait until it&apos;s
                 perfect. Build momentum as you build your product.
               </CardDescription>
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/launch.png"
+                  alt="Launch your product early"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </CardHeader>
           </Card>
 
+          {/* Feedback and Community Voting - Regular Card */}
           <Card>
             <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Users className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>Follow Indie Builders</CardTitle>
+              <CardTitle>Feedback & Community Voting</CardTitle>
               <CardDescription>
-                Connect with other founders and builders. Follow their journey,
-                learn from their updates, and build together.
+                Get valuable feedback from real users. Let the community vote on
+                features and help shape your product roadmap.
               </CardDescription>
+              <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/community_feedback.png"
+                  alt="Community feedback and voting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </CardHeader>
           </Card>
 
+          {/* Stay Updated - Regular Card */}
           <Card>
             <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <TrendingUp className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>Showcase Progress</CardTitle>
-              <CardDescription>
-                Post regular updates about features, milestones, revenue, and
-                more. Let your audience watch your product evolve.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Bell className="h-6 w-6 text-primary" />
-              </div>
               <CardTitle>Stay Updated</CardTitle>
               <CardDescription>
-                Get notified when builders you follow ship new features, hit
-                milestones, or share important updates.
+                Follow your favorite builders and get notified when they ship
+                new features, hit milestones, or share important updates.
               </CardDescription>
+              <div className="relative mt-4 aspect-3/4 w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/be_updated.png"
+                  alt="Stay updated with notifications"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
             </CardHeader>
           </Card>
 
-          <Card>
+          {/* Build in Public - Regular Card */}
+          <Card className="sm:col-span-2">
             <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Star className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>Celebrate Milestones</CardTitle>
+              <CardTitle>Build in Public</CardTitle>
               <CardDescription>
-                Hit your first sale? Reached 100 users? Share your wins and get
-                support from the community.
+                Share milestones, celebrate wins, and document your journey.
+                Build trust and grow your audience as you build.
               </CardDescription>
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/timeline.png"
+                  alt="Share your milestones"
+                  fill
+                  className="object-cover object-[0%_40%]"
+                />
+              </div>
             </CardHeader>
           </Card>
 
-          <Card>
+          {/* Discover New Projects - Wide Card */}
+          {/* <Card className="sm:col-span-2">
             <CardHeader>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Zap className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>Discover Early</CardTitle>
+              <CardTitle>Discover New Projects</CardTitle>
               <CardDescription>
                 Find innovative products before they hit the mainstream. Get
                 early access and influence product direction.
               </CardDescription>
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/discover_launches.png"
+                  alt="Discover new launches"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </CardHeader>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </section>

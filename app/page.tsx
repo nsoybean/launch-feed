@@ -10,11 +10,27 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
+  const [showForm, setShowForm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
+  const [xHandle, setXHandle] = useState("");
+
   const scrollToHero = () => {
     const heroSection = document.getElementById("hero");
     heroSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleJoinWaitlist = () => {
+    setShowForm(true);
+  };
+
+  const handleSubmit = () => {
+    // Handle form submission here
+    console.log({ email, website, xHandle });
+    // You can add your submission logic here
   };
   return (
     <div className="min-h-screen bg-linear-to-b from-white to-zinc-50 dark:from-black dark:to-zinc-950">
@@ -69,12 +85,46 @@ export default function Home() {
                 <input
                   type="email"
                   placeholder="name@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
                 />
-                <Button size="lg" className="h-12">
+                <Button size="lg" className="h-12" onClick={handleJoinWaitlist}>
                   Join Waitlist
                 </Button>
               </div>
+
+              {/* Additional form fields */}
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  showForm ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="flex flex-col items-center gap-4 max-w-2xl mx-auto">
+                  <input
+                    type="url"
+                    placeholder="Website (optional)"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                  />
+                  <input
+                    type="text"
+                    placeholder="X handle (optional, e.g. @nsoybean)"
+                    value={xHandle}
+                    onChange={(e) => setXHandle(e.target.value)}
+                    className="h-12 w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                  />
+                  <Button
+                    size="lg"
+                    className="h-12 w-full max-w-sm"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </div>
+
               <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
                 100+ builders have already joined
               </p>

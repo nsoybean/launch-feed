@@ -26,7 +26,7 @@ export default function Home() {
           <div className="flex h-14 items-center justify-between">
             <div className="flex items-center gap-2">
               <Rocket className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold">LaunchFeed</span>
+              <span className="text-md font-semibold">LaunchFeed</span>
             </div>
             <div className="flex items-center gap-4">
               {/* <Button variant="ghost" size="sm">
@@ -39,7 +39,7 @@ export default function Home() {
                 About
               </Button> */}
 
-              <Button size="sm" onClick={scrollToHero} className="h-8 text-xs">
+              <Button size="sm" onClick={scrollToHero} className="h-8 text-sm">
                 Join Waitlist
               </Button>
             </div>

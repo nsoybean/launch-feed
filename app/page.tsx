@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +12,10 @@ import { Badge } from "@/components/ui/badge";
 import { Rocket, Users, TrendingUp, Bell, Star, Zap } from "lucide-react";
 
 export default function Home() {
+  const scrollToHero = () => {
+    const heroSection = document.getElementById("hero");
+    heroSection?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="min-h-screen bg-linear-to-b from-white to-zinc-50 dark:from-black dark:to-zinc-950">
       {/* Navigation */}
@@ -31,14 +37,16 @@ export default function Home() {
                 About
               </Button> */}
 
-              <Button size="sm">Join Waitlist</Button>
+              <Button size="sm" onClick={scrollToHero}>
+                Join Waitlist
+              </Button>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+      <section id="hero" className="px-4 pt-20 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
             <Badge className="mb-6" variant="secondary">
@@ -206,7 +214,7 @@ export default function Home() {
                 <input
                   type="email"
                   placeholder="name@email.com"
-                  className="h-12 w-full max-w-sm rounded-lg border-0 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 bg-amber-50"
+                  className="h-12 w-full max-w-sm rounded-lg border-0 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 bg-accent"
                 />
                 <Button size="lg" variant="secondary" className="h-12">
                   Join Waitlist

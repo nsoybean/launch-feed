@@ -18,6 +18,10 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [xHandle, setXHandle] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const formRef = useRef<HTMLDivElement>(null);
 
   const scrollToHero = () => {
@@ -29,10 +33,55 @@ export default function Home() {
     setShowForm(true);
   };
 
-  const handleSubmit = () => {
-    // Handle form submission here
-    console.log({ email, website, xHandle });
-    // You can add your submission logic here
+  const handleSubmit = async () => {
+    if (!email) {
+      alert("Please enter your email");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const date = new Date();
+    const inputValue: { [key: string]: string } = {
+      email: email,
+      website: website || "",
+      xHandle: xHandle || "",
+      createdAt: date.toLocaleString(),
+    };
+
+    const APP_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_APP_ID;
+    const baseURL = `https://script.google.com/macros/s/${APP_ID}/exec`;
+    const formData = new FormData();
+
+    Object.keys(inputValue).forEach((key) => {
+      formData.append(key, inputValue[key]);
+    });
+
+    try {
+      const res = await fetch(baseURL, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        setSubmitStatus("success");
+        // Reset form
+        setEmail("");
+        setWebsite("");
+        setXHandle("");
+        setTimeout(() => {
+          setShowForm(false);
+          setSubmitStatus("idle");
+        }, 2000);
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (e) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -114,10 +163,21 @@ export default function Home() {
                   />
                   <Button
                     size="lg"
-                    className="h-12 shrink-0"
+                    className={`h-12 shrink-0 transition-colors ${
+                      submitStatus === "success"
+                        ? "bg-green-600 hover:bg-green-700"
+                        : ""
+                    }`}
                     onClick={showForm ? handleSubmit : handleJoinWaitlist}
+                    disabled={isSubmitting}
                   >
-                    {showForm ? "Submit" : "Join Waitlist"}
+                    {isSubmitting
+                      ? "Submitting..."
+                      : submitStatus === "success"
+                      ? "Success!"
+                      : showForm
+                      ? "Submit"
+                      : "Join Waitlist"}
                   </Button>
                 </div>
 
@@ -142,6 +202,11 @@ export default function Home() {
                       onChange={(e) => setXHandle(e.target.value)}
                       className="h-12 w-full rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
                     />
+                    {submitStatus === "error" && (
+                      <p className="text-sm text-red-600 dark:text-red-400">
+                        Something went wrong. Please try again.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

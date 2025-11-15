@@ -12,15 +12,14 @@ export default function CTASection({ onJoinClick }: CTASectionProps) {
         <Card className="overflow-hidden border-none bg-linear-to-r from-secondary to-secondary/80">
           <CardContent className="p-12 text-center">
             <h2 className="text-3xl font-bold sm:text-4xl">
-              Ready to Build in Public?
+              Don&apos;t Build in the Dark.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg">
-              Join the waitlist and be among the first to showcase your
-              journey, connect with other builders, and grow your audience.
+              Join the waitlist for exclusive early access and launch your products to the right audience.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <Button size="lg" className="h-12" onClick={onJoinClick}>
-                Join Waitlist
+                Get Early Access
               </Button>
             </div>
           </CardContent>

@@ -21,100 +21,120 @@ const Features = (props: Props) => {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Launch Early - Wide Card */}
-          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          {/* 1. Launch Early - Squarish Card */}
+          <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Launch Early, Launch Often</CardTitle>
+              <CardTitle>Launch early</CardTitle>
               <CardDescription>
-                Share your SaaS from day one. Don&apos;t wait until it&apos;s
-                perfect. Build momentum as you build your product.
+                As long you have a website, launch it, gather feedback, and
+                build buzz before your official release
               </CardDescription>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg p-2">
+              <div className="relative mt-4 h-72 w-full overflow-hidden rounded-lg p-2">
                 <Image
-                  src="/launches.png"
-                  alt="Launch your product early"
+                  src="/launch_detail.png"
+                  alt="Example launch of a saas"
                   fill
-                  className="object-cover object-[0%_0%]"
+                  className="object-contain"
                 />
               </div>
             </CardHeader>
           </Card>
 
-          {/* Feedback and Community Voting - Regular Card */}
+          {/* 2. Beyond Launch Day - Landscape Card (2 cols) */}
+          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle>Beyond launch day</CardTitle>
+              <CardDescription>
+                Share milestones and updates. Keep your audience engaged as you
+                build and grow
+              </CardDescription>
+              <div className="relative mt-4 h-72 w-full overflow-hidden rounded-lg p-2">
+                <Image
+                  src="/timeline.png"
+                  alt="Timeline of updates"
+                  fill
+                  className="object-cover object-top-left"
+                />
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* 3. Get Highlighted for Shipping - Landscape Card (2 cols) */}
+          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle>Get Highlighted for Shipping</CardTitle>
+              <CardDescription>
+                Ship relentlessly, get rewarded. Builders with regular updates
+                get featured in a special section - your activity streak shows
+                you&apos;re serious.
+              </CardDescription>
+              <div className="relative mt-4 h-80 w-full overflow-hidden rounded-lg p-2">
+                <Image
+                  src="/shipping_consistency.png"
+                  alt="Best consistency section"
+                  fill
+                  className="object-cover object-[100%_120%]"
+                />
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* 4. Follow Your Favorite Builders - Portrait Card */}
           <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle>Follow Your Favorite Builders</CardTitle>
+              <CardDescription>
+                Discover and follow indie makers. Get notified when they ship
+                updates, launch new projects, or hit milestones
+              </CardDescription>
+              <div className="relative mt-4 h-80 w-[65%] overflow-hidden rounded-lg p-2 flex mx-auto">
+                <Image
+                  src="/follow_builder.png"
+                  alt="Suggested builder"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* 5. Feature Request Board - Portrait Card */}
+          <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardTitle>Feature Request Board</CardTitle>
+              <CardDescription>
+                Show transparency in building + Community-submitted ideas with
+                vote counts.
+              </CardDescription>
+              <div className="relative mt-4 h-80 w-full overflow-hidden rounded-lg p-2">
+                <Image
+                  src="/feature_request.png"
+                  alt="Feature request board"
+                  fill
+                  className="object-cover object-[0%_30%]"
+                />
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* 6. Feedback & Community Voting - Squarish Card (2 cols) */}
+          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
               <CardTitle>Feedback & Community Voting</CardTitle>
               <CardDescription>
                 Get valuable feedback from real users. Let the community vote on
                 features and help shape your product roadmap.
               </CardDescription>
-              <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-lg p-2">
+              <div className="relative mt-4 h-80 w-full overflow-hidden rounded-lg p-2">
                 <Image
                   src="/community_feedback.png"
-                  alt="Community feedback and voting"
+                  alt="Users leaving comments and feedback"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </CardHeader>
           </Card>
-
-          {/* Stay Updated - Regular Card */}
-          <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <CardHeader>
-              <CardTitle>Stay Updated</CardTitle>
-              <CardDescription>
-                Follow your favorite builders and get notified when they ship
-                new features, hit milestones, or share important updates.
-              </CardDescription>
-              <div className="relative mt-4 aspect-3/4 w-full overflow-hidden rounded-lg p-2">
-                <Image
-                  src="/be_updated.png"
-                  alt="Stay updated with notifications"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </CardHeader>
-          </Card>
-
-          {/* Build in Public - Regular Card */}
-          <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <CardHeader>
-              <CardTitle>Build in Public</CardTitle>
-              <CardDescription>
-                Share milestones, celebrate wins, and document your journey.
-                Build trust and grow your audience as you build.
-              </CardDescription>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg p-2">
-                <Image
-                  src="/timeline.png"
-                  alt="Share your milestones"
-                  fill
-                  className="object-cover object-[0%_40%]"
-                />
-              </div>
-            </CardHeader>
-          </Card>
-
-          {/* Discover New Projects - Wide Card */}
-          {/* <Card className="sm:col-span-2">
-            <CardHeader>
-              <CardTitle>Discover New Projects</CardTitle>
-              <CardDescription>
-                Find innovative products before they hit the mainstream. Get
-                early access and influence product direction.
-              </CardDescription>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-lg">
-                <Image
-                  src="/discover_launches.png"
-                  alt="Discover new launches"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </CardHeader>
-          </Card> */}
         </div>
       </div>
     </section>

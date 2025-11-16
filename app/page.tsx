@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import CTASection from "@/components/cta-section";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -126,6 +127,7 @@ export default function Home() {
                 About
               </Button> */}
 
+              <ThemeToggle />
               <Button size="sm" onClick={scrollToHero} className="h-8 text-sm">
                 Join Waitlist
               </Button>

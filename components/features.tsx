@@ -15,8 +15,8 @@ const Features = (props: Props) => {
             Why LaunchFeed?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-            A better alternative to Product Hunt for indie builders who want to
-            grow their audience from day one.
+            Everything you need to build, launch, and grow your audience from
+            day one.
           </p>
         </div>
 

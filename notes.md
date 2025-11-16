@@ -3,7 +3,7 @@
 * description:  Where builders share their journey, not just their launch
 * key features: let founders list their saas and build in public. showcases new launches and updates. Follow indie builders, celebrate milestones, discover products as they're being built.
 
-## benefits
+## features/ benefits
 * Launch early
 Description: As long you have a website, launch it, gather feedback, and build buzz before your official release
 [Squarish Image](/launch_detail.png): Example launch of a saas  
@@ -28,18 +28,8 @@ Description: Ship relentlessly, get rewarded. Builders with regular updates get 
 Description: Show transparency in building + Community-submitted ideas with vote counts.
 [Portrait image](/feature_request.png.png): Feature request board
 
-
-
-
-
-
-
-
-
 ## Configs
 google sheet
-* deployment ID:
-AKfycbxr0YiLUCeTJMSwxp8D022ybpRD9ivAoRbDowtmSNir7OIkynydqEkJIcVlcXVt_XBu
 * sheet URL: https://script.google.com/macros/s/AKfycbzVa586LRLYgL4d7Sc1Wg2kVw5IRnheLXoB69G5LVl-kCoLtq1qd9L_MGkvpFH1MTux/exec
 
 
@@ -61,7 +51,13 @@ Thoughts? Would you use this?
 ```
 
 ```
-Super early, but would love if you checked it out: [launchfeed.vercel.app]
+Hey [Name]! Love your product [Product] - the updates are inspiring 🔥
+
+Quick pitch: i'm building LaunchFeed where builders launch their projects + share ongoing updates (not just a one-time launch).
+
+Would love your feedback: launchfeed.vercel.app
+
+Super early, but 30 builders already on waitlist.
 ```
 
 

@@ -3,10 +3,8 @@ import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
 type Props = unknown;
 
+/* Features Section */
 const Features = (props: Props) => {
-  {
-    /* Features Section */
-  }
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">

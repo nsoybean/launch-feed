@@ -62,6 +62,7 @@ export default function Home() {
       });
 
       if (res.ok) {
+        toast.success("Successfully joined the waitlist!");
         setSubmitStatus("success");
         // Reset form
         setEmail("");
@@ -72,9 +73,11 @@ export default function Home() {
           setSubmitStatus("idle");
         }, 2000);
       } else {
+        toast.error("Failed to join the waitlist. Please try again.");
         setSubmitStatus("error");
       }
     } catch (e) {
+      toast.error("Failed to join the waitlist. Please try again.");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

@@ -17,11 +17,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Launch Feed",
   description: "Where builders share their journey, not just their launch",
-  icons: {
-    icon: "/loglo.png",
-    shortcut: "/loglo.png",
-    apple: "/loglo.png",
-  },
+  icons: [
+    {
+      rel: "icon",
+      url: "/loglo.png",
+      type: "image/png",
+    },
+    {
+      rel: "apple-touch-icon",
+      url: "/loglo.png",
+    },
+  ],
   openGraph: {
     type: "website",
     url: "https://launchfeed.vercel.app",

@@ -138,12 +138,72 @@ const EarlyBuildersCards = (props: Props) => {
   }, []);
 
   // Split builders into two rows (7 each)
-  const firstRow = earlyBuilders.slice(0, 7);
-  const secondRow = earlyBuilders.slice(7, 14);
+  const rows = [
+    {
+      builders: earlyBuilders.slice(0, 7),
+      animationClass: "animate-scroll-right",
+      keyPrefix: "first",
+    },
+    {
+      builders: earlyBuilders.slice(7, 14),
+      animationClass: "animate-scroll-left",
+      keyPrefix: "second",
+    },
+  ];
 
-  // Duplicate items for seamless loop
-  const firstRowDuplicated = [...firstRow, ...firstRow];
-  const secondRowDuplicated = [...secondRow, ...secondRow];
+  // Render a single builder card
+  const renderCard = (
+    builder: EarlyBuilder,
+    index: number,
+    keyPrefix: string
+  ) => {
+    const logoUrl = builder.logo || getFaviconUrl(builder.link);
+    const Card = (
+      <div
+        className="shrink-0 w-72 px-6 py-2 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-104"
+        style={{
+          backgroundColor: builder.color
+            ? `${builder.color}33`
+            : "oklch(0.62 0.19 25 / 0.1)",
+        }}
+      >
+        {logoUrl && (
+          <Image
+            src={logoUrl}
+            alt={`${builder.name} logo`}
+            width={64}
+            height={64}
+            className="w-8 h-8 object-contain mb-4 rounded-lg"
+          />
+        )}
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+          {builder.name}
+        </h3>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+          {builder.description}
+        </p>
+      </div>
+    );
+
+    return builder.link ? (
+      <a
+        key={`${keyPrefix}-${index}`}
+        href={addUTMParams(builder.link)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="shrink-0 cursor-pointer relative z-10"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        {Card}
+      </a>
+    ) : (
+      <div key={`${keyPrefix}-${index}`} className="shrink-0">
+        {Card}
+      </div>
+    );
+  };
 
   return (
     <section className="py-16 overflow-hidden">
@@ -156,113 +216,22 @@ const EarlyBuildersCards = (props: Props) => {
         </p>
       </div>
 
-      {/* First row - slides right */}
-      <div className="mb-8 relative">
-        <div className="flex gap-6 animate-scroll-right">
-          {firstRowDuplicated.map((builder, index) => {
-            const logoUrl = builder.logo || getFaviconUrl(builder.link);
-            const Card = (
-              <div
-                className="shrink-0 w-72 p-6 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-105"
-                style={{
-                  backgroundColor: builder.color
-                    ? `${builder.color}33`
-                    : "oklch(0.62 0.19 25 / 0.1)",
-                }}
-              >
-                {logoUrl && (
-                  <Image
-                    src={logoUrl}
-                    alt={`${builder.name} logo`}
-                    width={64}
-                    height={64}
-                    className="w-8 h-8 object-contain mb-4 rounded-lg"
-                  />
-                )}
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
-                  {builder.name}
-                </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-                  {builder.description}
-                </p>
-              </div>
-            );
-
-            return builder.link ? (
-              <a
-                key={`first-${index}`}
-                href={addUTMParams(builder.link)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 cursor-pointer relative z-10"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                {Card}
-              </a>
-            ) : (
-              <div key={`first-${index}`} className="shrink-0">
-                {Card}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Second row - slides left */}
-      <div className="relative">
-        <div className="flex gap-6 animate-scroll-left">
-          {secondRowDuplicated.map((builder, index) => {
-            const logoUrl = builder.logo || getFaviconUrl(builder.link);
-            const Card = (
-              <div
-                className="shrink-0 w-72 p-6 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-105"
-                style={{
-                  backgroundColor: builder.color
-                    ? `${builder.color}33`
-                    : "oklch(0.62 0.19 25 / 0.1)",
-                }}
-              >
-                {logoUrl && (
-                  <Image
-                    src={logoUrl}
-                    alt={`${builder.name} logo`}
-                    width={64}
-                    height={64}
-                    className="w-8 h-8 object-contain mb-4 rounded-lg"
-                  />
-                )}
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
-                  {builder.name}
-                </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-                  {builder.description}
-                </p>
-              </div>
-            );
-
-            return builder.link ? (
-              <a
-                key={`second-${index}`}
-                href={addUTMParams(builder.link)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 cursor-pointer relative z-10"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                {Card}
-              </a>
-            ) : (
-              <div key={`second-${index}`} className="shrink-0">
-                {Card}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      {/* Render scrolling rows */}
+      {rows.map((row, rowIndex) => {
+        const duplicatedBuilders = [...row.builders, ...row.builders];
+        return (
+          <div
+            key={rowIndex}
+            className={rowIndex === 0 ? "mb-8 relative" : "relative"}
+          >
+            <div className={`flex gap-6 ${row.animationClass}`}>
+              {duplicatedBuilders.map((builder, index) =>
+                renderCard(builder, index, row.keyPrefix)
+              )}
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 };

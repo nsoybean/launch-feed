@@ -10,6 +10,7 @@ import Features from "@/components/features";
 import Footer from "@/components/footer";
 import CTASection from "@/components/cta-section";
 import { ThemeToggle } from "@/components/theme-toggle";
+import EarlyBuildersCards from "@/components/early-builders-cards";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -246,6 +247,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* early builder floating cards */}
+      <EarlyBuildersCards />
 
       {/* Features */}
       <Features />

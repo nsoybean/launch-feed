@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-type Props = unknown;
-
 const EARLY_BUILDERS_SHEET_CSV_URL =
   process.env.NEXT_PUBLIC_EARLY_BUILDERS_GOOGLE_SHEET_CSV_URL;
+const LOGO_DEV_PUBLIC_KEY =
+  process.env.NEXT_PUBLIC_LOGO_DEV_KEY || "pk_BxvWYlR6TVCdbC1fUPxMSw";
 
 type EarlyBuilder = {
   logo: string;
@@ -13,6 +13,24 @@ type EarlyBuilder = {
   description: string;
   color: string;
 };
+
+// Get logo from logo.dev service based on domain
+function getLogoDevUrl(url: string): string {
+  if (!url) return "";
+
+  try {
+    // Add https:// if protocol is missing
+    let fullUrl = url;
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      fullUrl = `https://${url}`;
+    }
+
+    const urlObj = new URL(fullUrl);
+    return `https://img.logo.dev/${urlObj.hostname}?token=${LOGO_DEV_PUBLIC_KEY}`;
+  } catch {
+    return "";
+  }
+}
 
 // Get favicon from Google's service based on domain
 function getFaviconUrl(url: string): string {
@@ -104,7 +122,70 @@ function parseCSV(csv: string): string[][] {
   return rows;
 }
 
-const EarlyBuildersCards = (props: Props) => {
+// Builder card component with image fallback handling
+const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
+  // Fallback priority: logo.dev -> custom logo -> favicon -> placeholder
+  const initialSrc = builder.link
+    ? getLogoDevUrl(builder.link)
+    : builder.logo || "";
+
+  const [imgSrc, setImgSrc] = useState<string>(initialSrc);
+  const [fallbackStep, setFallbackStep] = useState(0);
+  const [imgError, setImgError] = useState(false);
+
+  const handleImageError = () => {
+    // Cascade through fallback options
+    if (fallbackStep === 0 && builder.logo) {
+      // Try custom logo
+      setImgSrc(builder.logo);
+      setFallbackStep(1);
+    } else if (fallbackStep <= 1 && builder.link) {
+      // Try favicon
+      setImgSrc(getFaviconUrl(builder.link));
+      setFallbackStep(2);
+    } else {
+      // Show placeholder
+      setImgError(true);
+    }
+  };
+
+  return (
+    <div
+      className="shrink-0 w-72 px-6 py-2 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-104"
+      style={{
+        backgroundColor: builder.color
+          ? `${builder.color}33`
+          : "oklch(0.62 0.19 25 / 0.1)",
+      }}
+    >
+      {imgError || !imgSrc ? (
+        <div className="w-8 h-8 mb-4 rounded-lg bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
+          <span className="text-sm font-bold text-zinc-600 dark:text-zinc-300">
+            {builder.name?.charAt(0)?.toUpperCase() || "?"}
+          </span>
+        </div>
+      ) : (
+        <Image
+          src={imgSrc}
+          alt={`${builder.name} logo`}
+          width={64}
+          height={64}
+          className="w-8 h-8 object-contain mb-4 rounded-lg"
+          onError={handleImageError}
+          unoptimized
+        />
+      )}
+      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+        {builder.name}
+      </h3>
+      <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+        {builder.description}
+      </p>
+    </div>
+  );
+};
+
+const EarlyBuildersCards = () => {
   const [earlyBuilders, setEarlyBuilders] = useState<EarlyBuilder[]>([]);
 
   useEffect(() => {
@@ -157,34 +238,6 @@ const EarlyBuildersCards = (props: Props) => {
     index: number,
     keyPrefix: string
   ) => {
-    const logoUrl = builder.logo || getFaviconUrl(builder.link);
-    const Card = (
-      <div
-        className="shrink-0 w-72 px-6 py-2 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-104"
-        style={{
-          backgroundColor: builder.color
-            ? `${builder.color}33`
-            : "oklch(0.62 0.19 25 / 0.1)",
-        }}
-      >
-        {logoUrl && (
-          <Image
-            src={logoUrl}
-            alt={`${builder.name} logo`}
-            width={64}
-            height={64}
-            className="w-8 h-8 object-contain mb-4 rounded-lg"
-          />
-        )}
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
-          {builder.name}
-        </h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-          {builder.description}
-        </p>
-      </div>
-    );
-
     return builder.link ? (
       <a
         key={`${keyPrefix}-${index}`}
@@ -196,11 +249,11 @@ const EarlyBuildersCards = (props: Props) => {
           e.stopPropagation();
         }}
       >
-        {Card}
+        <BuilderCard builder={builder} />
       </a>
     ) : (
       <div key={`${keyPrefix}-${index}`} className="shrink-0">
-        {Card}
+        <BuilderCard builder={builder} />
       </div>
     );
   };

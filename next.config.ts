@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         hostname: "s2.googleusercontent.com",
         pathname: "/s2/favicons/**",
       },
+      {
+        protocol: "https",
+        hostname: "img.logo.dev",
+      },
     ],
   },
   async rewrites() {

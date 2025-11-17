@@ -154,7 +154,10 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
       } else {
         // Skip to favicon
         const faviconUrl = getFaviconUrl(builder.link);
-        console.log(`[${builder.name}] No custom logo, using favicon:`, faviconUrl);
+        console.log(
+          `[${builder.name}] No custom logo, using favicon:`,
+          faviconUrl
+        );
         setImgSrc(faviconUrl);
         setFallbackStep(2);
       }
@@ -162,20 +165,29 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
       // Step 1: custom logo failed, try logo.dev (if we started with custom)
       const logoDevUrl = getLogoDevUrl(builder.link);
       if (logoDevUrl !== imgSrc) {
-        console.log(`[${builder.name}] Custom logo failed, trying logo.dev:`, logoDevUrl);
+        console.log(
+          `[${builder.name}] Custom logo failed, trying logo.dev:`,
+          logoDevUrl
+        );
         setImgSrc(logoDevUrl);
         setFallbackStep(2);
       } else {
         // Skip to favicon
         const faviconUrl = getFaviconUrl(builder.link);
-        console.log(`[${builder.name}] Skipping logo.dev, using favicon:`, faviconUrl);
+        console.log(
+          `[${builder.name}] Skipping logo.dev, using favicon:`,
+          faviconUrl
+        );
         setImgSrc(faviconUrl);
         setFallbackStep(3);
       }
     } else if (fallbackStep === 2 && builder.link) {
       // Step 2: try favicon
       const faviconUrl = getFaviconUrl(builder.link);
-      console.log(`[${builder.name}] Previous source failed, using favicon:`, faviconUrl);
+      console.log(
+        `[${builder.name}] Previous source failed, using favicon:`,
+        faviconUrl
+      );
       setImgSrc(faviconUrl);
       setFallbackStep(3);
     } else {
@@ -206,12 +218,12 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
           alt={`${builder.name} logo`}
           width={64}
           height={64}
-          className="w-8 h-8 object-contain mb-4 rounded-lg"
+          className="w-8 h-8 object-contain mb-1 rounded-lg"
           onError={handleImageError}
           unoptimized
         />
       )}
-      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-1">
         {builder.name}
       </h3>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">

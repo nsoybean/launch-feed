@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://launchfeed.app"),
   title: "Launch Feed",
   description: "Where builders share their journey, not just their launch",
   icons: [
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: "https://launchfeed.vercel.app",
+    url: "https://launchfeed.app",
     title: "Launch Feed",
     description: "Where builders share their journey, not just their launch",
     siteName: "Launch Feed",

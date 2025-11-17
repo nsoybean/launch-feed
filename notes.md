@@ -3,7 +3,7 @@
 * description:  Where builders share their journey, not just their launch
 * key features: let founders list their saas and build in public. showcases new launches and updates. Follow indie builders, celebrate milestones, discover products as they're being built.
 
-## features/ benefits
+## features
 * Launch early
 Description: As long you have a website, launch it, gather feedback, and build buzz before your official release
 [Squarish Image](/launch_detail.png): Example launch of a saas  
@@ -55,7 +55,7 @@ Hey [Name]! Love your product [Product] - the updates are inspiring 🔥
 
 Quick pitch: i'm building LaunchFeed where builders launch their projects + share ongoing updates (not just a one-time launch).
 
-Would love your feedback: launchfeed.vercel.app
+Would love your feedback: launchfeed.app
 
 Super early, but 30 builders already on waitlist.
 ```
@@ -72,5 +72,5 @@ Product Hunt is for launch day. Launch Feed is for the entire journey.
 Showcase your project. Post updates. Build your audience.
 
 Who wants early access? 🚀
-[Link](https://launchfeed.vercel.app)
+[Link](https://launchfeed.app)
 ```

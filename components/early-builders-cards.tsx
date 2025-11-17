@@ -126,8 +126,16 @@ function parseCSV(csv: string): string[][] {
 const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
   // Fallback priority: custom logo -> logo.dev -> favicon -> placeholder
   const getInitialSrc = () => {
-    if (builder.logo) return builder.logo;
-    if (builder.link) return getLogoDevUrl(builder.link);
+    if (builder.logo) {
+      console.log(`[${builder.name}] Using custom logo:`, builder.logo);
+      return builder.logo;
+    }
+    if (builder.link) {
+      const logoDevUrl = getLogoDevUrl(builder.link);
+      console.log(`[${builder.name}] Using logo.dev:`, logoDevUrl);
+      return logoDevUrl;
+    }
+    console.log(`[${builder.name}] No logo source available`);
     return "";
   };
 
@@ -139,31 +147,40 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
     // Cascade through fallback options
     if (fallbackStep === 0 && builder.link) {
       // Step 0: logo.dev failed, try custom logo
+      console.log(`[${builder.name}] Logo.dev failed, trying custom logo`);
       if (builder.logo) {
         setImgSrc(builder.logo);
         setFallbackStep(1);
       } else {
         // Skip to favicon
-        setImgSrc(getFaviconUrl(builder.link));
+        const faviconUrl = getFaviconUrl(builder.link);
+        console.log(`[${builder.name}] No custom logo, using favicon:`, faviconUrl);
+        setImgSrc(faviconUrl);
         setFallbackStep(2);
       }
     } else if (fallbackStep === 1 && builder.link) {
       // Step 1: custom logo failed, try logo.dev (if we started with custom)
       const logoDevUrl = getLogoDevUrl(builder.link);
       if (logoDevUrl !== imgSrc) {
+        console.log(`[${builder.name}] Custom logo failed, trying logo.dev:`, logoDevUrl);
         setImgSrc(logoDevUrl);
         setFallbackStep(2);
       } else {
         // Skip to favicon
-        setImgSrc(getFaviconUrl(builder.link));
+        const faviconUrl = getFaviconUrl(builder.link);
+        console.log(`[${builder.name}] Skipping logo.dev, using favicon:`, faviconUrl);
+        setImgSrc(faviconUrl);
         setFallbackStep(3);
       }
     } else if (fallbackStep === 2 && builder.link) {
       // Step 2: try favicon
-      setImgSrc(getFaviconUrl(builder.link));
+      const faviconUrl = getFaviconUrl(builder.link);
+      console.log(`[${builder.name}] Previous source failed, using favicon:`, faviconUrl);
+      setImgSrc(faviconUrl);
       setFallbackStep(3);
     } else {
       // Final fallback: show placeholder
+      console.log(`[${builder.name}] All sources failed, using placeholder`);
       setImgError(true);
     }
   };

@@ -142,7 +142,8 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
             <Badge className="mb-4" variant="secondary">
-              Where Builders Build in Public
+              {/* Where Builders Build in Public */}
+              For BuildInPublic folks
             </Badge>
             <h1 className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl lg:text-7xl">
               Build, Launch, and Grow

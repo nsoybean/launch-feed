@@ -17,6 +17,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [xHandle, setXHandle] = useState("");
+  const [saasDescription, setSaasDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
@@ -46,6 +47,7 @@ export default function Home() {
       email: email.trim(),
       website: website.trim() || "",
       xHandle: xHandle.trim() || "",
+      saasDescription: saasDescription.trim() || "",
       createdAt: date.toLocaleString(),
     };
 
@@ -70,6 +72,7 @@ export default function Home() {
         setEmail("");
         setWebsite("");
         setXHandle("");
+        setSaasDescription("");
         setTimeout(() => {
           setShowForm(false);
           setSubmitStatus("idle");
@@ -197,6 +200,13 @@ export default function Home() {
                       placeholder="Website (optional)"
                       value={website}
                       onChange={(e) => setWebsite(e.target.value)}
+                      className="h-12 w-full rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
+                    />
+                    <input
+                      type="url"
+                      placeholder="Short description (optional)"
+                      value={saasDescription}
+                      onChange={(e) => setSaasDescription(e.target.value)}
                       className="h-12 w-full rounded-lg border border-zinc-200 bg-white px-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-800 dark:bg-zinc-950"
                     />
                     <input

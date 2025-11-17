@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const EARLY_BUILDERS_SHEET_CSV_URL =
@@ -124,27 +124,46 @@ function parseCSV(csv: string): string[][] {
 
 // Builder card component with image fallback handling
 const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
-  // Fallback priority: logo.dev -> custom logo -> favicon -> placeholder
-  const initialSrc = builder.link
-    ? getLogoDevUrl(builder.link)
-    : builder.logo || "";
+  // Fallback priority: custom logo -> logo.dev -> favicon -> placeholder
+  const getInitialSrc = () => {
+    if (builder.logo) return builder.logo;
+    if (builder.link) return getLogoDevUrl(builder.link);
+    return "";
+  };
 
-  const [imgSrc, setImgSrc] = useState<string>(initialSrc);
-  const [fallbackStep, setFallbackStep] = useState(0);
+  const [imgSrc, setImgSrc] = useState<string>(getInitialSrc());
+  const [fallbackStep, setFallbackStep] = useState(builder.logo ? 1 : 0);
   const [imgError, setImgError] = useState(false);
 
   const handleImageError = () => {
     // Cascade through fallback options
-    if (fallbackStep === 0 && builder.logo) {
-      // Try custom logo
-      setImgSrc(builder.logo);
-      setFallbackStep(1);
-    } else if (fallbackStep <= 1 && builder.link) {
-      // Try favicon
+    if (fallbackStep === 0 && builder.link) {
+      // Step 0: logo.dev failed, try custom logo
+      if (builder.logo) {
+        setImgSrc(builder.logo);
+        setFallbackStep(1);
+      } else {
+        // Skip to favicon
+        setImgSrc(getFaviconUrl(builder.link));
+        setFallbackStep(2);
+      }
+    } else if (fallbackStep === 1 && builder.link) {
+      // Step 1: custom logo failed, try logo.dev (if we started with custom)
+      const logoDevUrl = getLogoDevUrl(builder.link);
+      if (logoDevUrl !== imgSrc) {
+        setImgSrc(logoDevUrl);
+        setFallbackStep(2);
+      } else {
+        // Skip to favicon
+        setImgSrc(getFaviconUrl(builder.link));
+        setFallbackStep(3);
+      }
+    } else if (fallbackStep === 2 && builder.link) {
+      // Step 2: try favicon
       setImgSrc(getFaviconUrl(builder.link));
-      setFallbackStep(2);
+      setFallbackStep(3);
     } else {
-      // Show placeholder
+      // Final fallback: show placeholder
       setImgError(true);
     }
   };
@@ -159,7 +178,7 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
       }}
     >
       {imgError || !imgSrc ? (
-        <div className="w-8 h-8 mb-4 rounded-lg bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
+        <div className="w-8 h-8 mb-4 rounded-lg bg-linear-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
           <span className="text-sm font-bold text-zinc-600 dark:text-zinc-300">
             {builder.name?.charAt(0)?.toUpperCase() || "?"}
           </span>

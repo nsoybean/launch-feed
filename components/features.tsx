@@ -22,7 +22,7 @@ const Features = (props: Props) => {
           {/* 1. Launch Early - Squarish Card */}
           <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Launch early</CardTitle>
+              <CardTitle> 🚀 Launch early</CardTitle>
               <CardDescription>
                 As long you have a website, launch it, gather feedback, and
                 build buzz before your official release
@@ -41,7 +41,7 @@ const Features = (props: Props) => {
           {/* 2. Beyond Launch Day - Landscape Card (2 cols) */}
           <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Beyond launch day</CardTitle>
+              <CardTitle>🎯 Beyond launch day</CardTitle>
               <CardDescription>
                 Share milestones and updates. Keep your audience engaged as you
                 build and grow
@@ -60,7 +60,7 @@ const Features = (props: Props) => {
           {/* 3. Get Highlighted for Shipping - Landscape Card (2 cols) */}
           <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Get Highlighted for Shipping</CardTitle>
+              <CardTitle> ⭐ Get Highlighted for Shipping</CardTitle>
               <CardDescription>
                 Ship relentlessly, get rewarded. Builders with regular updates
                 get featured in a special section - your activity streak shows
@@ -80,7 +80,7 @@ const Features = (props: Props) => {
           {/* 4. Follow Your Favorite Builders - Portrait Card */}
           <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Follow Your Favorite Builders</CardTitle>
+              <CardTitle> 👥 Follow Your Favorite Builders</CardTitle>
               <CardDescription>
                 Discover and follow indie makers. Get notified when they ship
                 updates, launch new projects, or hit milestones
@@ -99,7 +99,7 @@ const Features = (props: Props) => {
           {/* 5. Feature Request Board - Portrait Card */}
           <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Feature Request Board</CardTitle>
+              <CardTitle> 📋 Feature Request Board</CardTitle>
               <CardDescription>
                 Show transparency in building + Community-submitted ideas with
                 vote counts.
@@ -118,7 +118,7 @@ const Features = (props: Props) => {
           {/* 6. Feedback & Community Voting - Squarish Card (2 cols) */}
           <Card className="sm:col-span-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <CardHeader>
-              <CardTitle>Feedback & Community Voting</CardTitle>
+              <CardTitle> 💬 Feedback & Community Voting</CardTitle>
               <CardDescription>
                 Get valuable feedback from real users. Let the community vote on
                 features and help shape your product roadmap.

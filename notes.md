@@ -4,27 +4,27 @@
 * key features: let founders list their saas and build in public. showcases new launches and updates. Follow indie builders, celebrate milestones, discover products as they're being built.
 
 ## features
-* Launch early
+* 🚀 Launch early
 Description: As long you have a website, launch it, gather feedback, and build buzz before your official release
-[Squarish Image](/launch_detail.png): Example launch of a saas  
+[Squarish Image](/launch_detail.png): Example launch of a saas
 
-* Beyond launch day
+* 🎯 Share milestones beyond launch day
 Description: Share milestones and updates. Keep your audience engaged as you build and grow
 [Landscape Image](/timeline.png): Timeline of updates
 
-* Follow Your Favorite Builders
+* 👥 Follow Your Favorite Builders
 Description: Discover and follow indie makers. Get notified when they ship updates, launch new projects, or hit milestones
 [Portrait image](/follow_builder.png): Suggested builder
 
-* Feedback & Community Voting
+* 💬 Feedback & Community Voting
 Description: Get valuable feedback from real users. Let the community vote on features and help shape your product roadmap.
 [Squarish Image](/community_feedback.png): Users leaving comments and feedback
 
-* Get Highlighted for Shipping
+* ⭐ Get Highlighted for Shipping
 Description: Ship relentlessly, get rewarded. Builders with regular updates get featured in a special section - your activity streak shows you're serious.
 [Landscape image](/shipping_consistency.png): Best consistency section
 
-* Feature Request Board
+* 📋 Feature Request Board
 Description: Show transparency in building + Community-submitted ideas with vote counts.
 [Portrait image](/feature_request.png.png): Feature request board
 

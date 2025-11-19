@@ -199,7 +199,7 @@ const BuilderCard = ({ builder }: { builder: EarlyBuilder }) => {
 
   return (
     <div
-      className="shrink-0 w-72 px-6 py-2 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-104"
+      className="shrink-0 w-72 px-2 py-4 rounded-xl backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center text-center transition-transform hover:scale-104"
       style={{
         backgroundColor: builder.color
           ? `${builder.color}33`
